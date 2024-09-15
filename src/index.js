@@ -14,6 +14,10 @@ app.whenReady()
             webPreferences: {
                 preload: join(__dirname, "preload.js")
             }       
+
+        })
+        ipcMain.on("AbrirPapo", async (evento, codigo) => {
+            janela.loadFile( join(__dirname, "/public/PaginaPapo.html"))
         })
         janela.loadFile( join(__dirname, "./public/PaginaInicio.html"))
         let nome = userInfo().username

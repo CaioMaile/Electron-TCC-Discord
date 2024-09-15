@@ -1,16 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans");
-* {
-    font-family: "Open Sans", sans-serif;
-    font-size: 14pt;
-    font-weight: 400;
-}
-:root {
-    --azul: #5ccbff; 
-    --escuro: #282b30;
-    --medio: #36393e;
-    --claro: #696f75;
-    --letra: #ddd;
-}
+* {font-family: "Open Sans", sans-serif; font-size: 14pt; font-weight: 400;}
+:root { --azul: #5ccbff; --escuro: #282b30; --medio: #36393e; --claro: #696f75; --letra: #ddd;}
 body {
     background: var(--medio);
     color: var(--letra);  
@@ -42,5 +32,25 @@ div.menu {
   
     -webkit-app-region: no-drag;
   }
+
   div.principal{display: flex; flex-direction: column; flex: 1;}
   div.principal img{height: 100%; object-fit: contain; width: 100%;}
+  div.principal-barra{display: flex; padding: 16px;}
+  div.principal-conversa {background-image: url("./figuras.png"); background-size: cover; flex: 1; overflow-y: scroll;}
+  div.principal-barra input {
+    background: var(--escuro);
+    border: none; 
+    color: var(--azul);  
+    flex: 1;
+    outline: none;
+    padding: 4px 0;
+    text-align: center;
+  }
+  div.principal-barra button { background: var(--medio); border: none; color: var(--letra); height: 32px; width: 32px;}
+  div.principal-barra button:hover { background: var(--azul); color: var(--escuro);}
+
+  div.conversa{margin: 32px;}
+  div.conversa span{color: var(--azul);}
+
+  ::-webkit-scrollbar { background: var(--escuro); width: 8px;}
+  ::-webkit-scrollbar-thumb { background: var(--azul);}
