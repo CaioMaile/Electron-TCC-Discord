@@ -2,8 +2,13 @@ const { app, BrowserWindow, ipcMain } = require("electron")
 const { join } = require("path")
 const { userInfo } = require("os")
 
+require("./functions/conexão.js")
+const ObterModelo = require("./functions/modelo.js")
+
 app.whenReady()
     .then (() => {
+        let nome = userInfo().username
+        let modelo = null
         const janela = new BrowserWindow ({
             autoHideMenuBa: true,
             minHeight: 580,
@@ -16,9 +21,21 @@ app.whenReady()
             }       
 
         })
+        janela.loadFile( join(__dirname, "./public/PaginaInicio.html"))
+
+
         ipcMain.on("AbrirPapo", async (evento, codigo) => {
             janela.loadFile( join(__dirname, "/public/PaginaPapo.html"))
         })
-        janela.loadFile( join(__dirname, "./public/PaginaInicio.html"))
-        let nome = userInfo().username
+        ipcMain.on("maximizar", () => {
+            janela.isMaximized() ? janela.unmaximize() : janela.maximize()
+        })
+        ipcMain.on("minimizar", () => {
+            janela.minimize()
+        })
+        ipcMain.on("fechar", () => {
+            app.quit()
+        })
+        modelo = ObterModelo(codigo)
+
     })
