@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Descent </title>
     <link rel="stylesheet" href="./style.css">
-    <link rel="shortcut" href="./icon.png" type="img/png">
+    <link rel="shortcut" href="./Imagens/icon.png" type="img/png">
 </head>
 <body>
     <div class="menu">
-        <img src="./icon.png" alt="icone">
+        <img src="./Imagens/icon.png" alt="icone">
     </div>
     <div class="principal">
         <div class="principal-barra">
@@ -26,9 +26,34 @@
         </div>
     </div>
 
-
     <script>
+        const entradaConversa = document.querySelector("input")
+        const campoConversa = document.querySelector("div.principal-conversa")
 
+        entradaConversa.addEventListener("keypress", (evento) => {
+            if(evento.key == "Enter") {
+                evento.preventDefault()
+                electron.EnviarMensagem(evento.target.value)
+                evento.target.value = null
+            }
+        })
+
+        setInterval(() => {
+            electron.ReceberMensagem()
+                .then((resultados) => {
+                    campoConversa.innerHTML = null
+                    for (let resultado of resultados) {
+                        const conversa = document.createElement("div")
+                        conversa.setAttribute("class", "conversa")
+                        const nome = document.createElement("span")
+                        nome.innerHTML = resultado.none
+                        conversa.appendChild(nome)
+                        conversa.append(" ")
+                        conversa.append(resultado.mensagem)
+                        campoConversa.appendChild(conversa)
+                    }
+                })
+        }, 1000)
     </script>
 </body>
 </html>

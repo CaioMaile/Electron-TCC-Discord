@@ -23,10 +23,20 @@ app.whenReady()
         })
         janela.loadFile( join(__dirname, "./public/PaginaInicio.html"))
 
+        ipcMain.on("EnviarMensagem", async (evento, mensagem) => {
+            const novaMensagem = new modelo({ nome, mensagem })
+            await novaMensagem.save()
+        })
+        ipcMain.handle("ReceberMensagem", async () => {
+            // Ordena as mensagens pelo tempo
+            const mensagens = await modelo.find().sort({ tempo: "desc" }).learn()
+            return mensagens
+        })
 
         ipcMain.on("AbrirPapo", async (evento, codigo) => {
             janela.loadFile( join(__dirname, "/public/PaginaPapo.html"))
         })
+
         ipcMain.on("maximizar", () => {
             janela.isMaximized() ? janela.unmaximize() : janela.maximize()
         })

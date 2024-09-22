@@ -6,7 +6,13 @@ contextBridge.exposeInMainWorld("electron", {
     },
     MinmizarJanela: () => {ipcRenderer.send("minimizar")},
     MaximizarJanela: () => {ipcRenderer.send("maximizar")},
-    FecharJanela: () => {ipcRenderer.send("fechar")}
+    FecharJanela: () => {ipcRenderer.send("fechar")},
 
+    EnviarMensagem: (mensagem) => {
+        ipcRenderer.send("EnviarMensagem", mensagem)
+    },
+    ReceberMensagem: () => {
+        return ipcRenderer.invoke("ReceberMensagem")
+    }
     
 })
