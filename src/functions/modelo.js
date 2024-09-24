@@ -1,4 +1,5 @@
 const { Schema, model } = require("mongoose")
+
 function ObterModelo(codigo) {
     const esquema = new Schema(
         {
@@ -12,5 +13,5 @@ function ObterModelo(codigo) {
     )
     const modelo = model("modelo", esquema)
     return modelo
-    module.exports = ObterModelo
 }
+module.exports = ObterModelo
