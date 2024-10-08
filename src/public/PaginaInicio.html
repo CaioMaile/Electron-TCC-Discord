@@ -10,20 +10,24 @@
 <body>
     <div class="menu">
         <img src="./Imagens/icon.png" alt="icone">
-        <input type="text" placeholder="Código do servidor" maxlength="4">
+        <input type="text" placeholder="Nome do usuario" id="Nome" maxlength="10">
+        <input type="text" placeholder="Código do servidor" id="Codigo" maxlength="4">
     </div>
     <div class="principal">
         <img src="./Imagens/background.png" alt="fundo">
     </div>
 
     <script>
-        const entradaCodigo = document.querySelector("input")
-        entradaCodigo.addEventListener("keypress", (evento) => {
-            if(evento.key == "Enter"){
-                evento.preventDefault()
-                electron.AbrirPapo(evento.target.value)
-            }
-        })
+    src="./src/renderer.js"
+    
+    const entradaCodigo = document.querySelector('input[id="Codigo"]')
+
+    entradaCodigo.addEventListener("keypress", (evento) => {
+        if(evento.key == "Enter"){
+            evento.preventDefault()
+            electron.AbrirPapo(evento.target.value)
+        }
+    })
     </script>
 </body>
 </html>

@@ -13,6 +13,9 @@ contextBridge.exposeInMainWorld("electron", {
     },
     ReceberMensagem: () => {
         return ipcRenderer.invoke("ReceberMensagem")
-    }
+    },
     
+    setName: (nome_Usuario) => {
+        ipcRenderer.invoke('setName', nome_Usuario)
+    }
 })

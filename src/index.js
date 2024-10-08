@@ -5,8 +5,15 @@ const { userInfo } = require("os")
 require("./functions/conexão.js")
 const ObterModelo = require("./functions/modelo.js")
 
+
 app.whenReady()
     .then (() => {
+        /*
+        ipcMain.handle("setName", async function setGoal(_event, value) {
+            let nome = (value)
+            console.log(value)
+        })
+        */
         let nome = userInfo().username
         let modelo = null
         const janela = new BrowserWindow ({
