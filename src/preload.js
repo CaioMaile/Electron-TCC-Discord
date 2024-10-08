@@ -1,21 +1,17 @@
 const { contextBridge, ipcRenderer } = require("electron")
 
 contextBridge.exposeInMainWorld("electron", {
-    AbrirPapo: (codigo) => {
-        ipcRenderer.send("AbrirPapo", codigo)
+    AbrirPapo: (nome, codigo) => {
+        ipcRenderer.send("AbrirPapo", nome, codigo)
     },
     MinmizarJanela: () => {ipcRenderer.send("minimizar")},
     MaximizarJanela: () => {ipcRenderer.send("maximizar")},
     FecharJanela: () => {ipcRenderer.send("fechar")},
 
-    EnviarMensagem: (mensagem) => {
+    EnviarMensagem: (mensagem, nome) => {
         ipcRenderer.send("EnviarMensagem", mensagem)
     },
     ReceberMensagem: () => {
         return ipcRenderer.invoke("ReceberMensagem")
     },
-    
-    setName: (nome_Usuario) => {
-        ipcRenderer.invoke('setName', nome_Usuario)
-    }
 })

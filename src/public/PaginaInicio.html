@@ -12,22 +12,22 @@
         <img src="./Imagens/icon.png" alt="icone">
         <input type="text" placeholder="Nome do usuario" id="Nome" maxlength="10">
         <input type="text" placeholder="Código do servidor" id="Codigo" maxlength="4">
+        <button type="button" onclick="Logar()">Entrar</button>
     </div>
     <div class="principal">
         <img src="./Imagens/background.png" alt="fundo">
     </div>
 
     <script>
-    src="./src/renderer.js"
-    
-    const entradaCodigo = document.querySelector('input[id="Codigo"]')
+        const entradaNome = document.querySelector('input[id="Nome"]')
+        const entradaCodigo = document.querySelector('input[id="Codigo"]')
 
-    entradaCodigo.addEventListener("keypress", (evento) => {
-        if(evento.key == "Enter"){
-            evento.preventDefault()
-            electron.AbrirPapo(evento.target.value)
-        }
-    })
+        entradaCodigo.addEventListener("keypress", (evento) => {
+            if(evento.key == "Enter"){
+                evento.preventDefault()
+                electron.AbrirPapo(entradaNome.value, entradaCodigo.value)
+            }
+        })
     </script>
 </body>
 </html>

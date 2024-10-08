@@ -32,6 +32,10 @@ div.menu {
   
     -webkit-app-region: no-drag;
   }
+  div.menu button {
+    color: whitesmoke;
+    padding: 5px 0;
+  }
 
   div.principal{display: flex; flex-direction: column; flex: 1;}
   div.principal img{height: 100%; object-fit: contain; width: 100%;}
