@@ -33,7 +33,7 @@ div.menu {
     -webkit-app-region: no-drag;
   }
   div.menu button {
-    color: whitesmoke;
+    color: rgb(0, 0, 0);
     padding: 5px 0;
   }
 

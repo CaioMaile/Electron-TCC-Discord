@@ -1,5 +1,4 @@
 const { Schema, model } = require("mongoose")
-
 function ObterModelo(codigo) {
     const esquema = new Schema(
         {
