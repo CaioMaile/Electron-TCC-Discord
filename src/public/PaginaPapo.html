@@ -10,8 +10,10 @@
 <body>
     <div class="menu">
         <img src="./Imagens/icon.png" alt="icone">
-        <table>
-            
+        <table id="showServers">
+            <tr>
+                <th>Servidores</th>
+            </tr>
         </table>
     </div>
     <div class="principal">
@@ -33,6 +35,10 @@
         const entradaConversa = document.querySelector("input")
         const campoConversa = document.querySelector("div.principal-conversa")
 
+        const mesa = document.querySelector('#showServers')
+        
+        
+
         entradaConversa.addEventListener("keypress", (evento) => {
             if(evento.key == "Enter") {
                 evento.preventDefault()
@@ -42,6 +48,9 @@
         })
 
         setInterval(() => {
+
+            const linha = document.createElement("tr")
+            const nomeServidor = document.createElement("th")
             electron.ReceberMensagem()
                 .then((resultados) => {
                     campoConversa.innerHTML = null

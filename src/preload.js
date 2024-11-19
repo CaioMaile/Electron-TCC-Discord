@@ -14,4 +14,5 @@ contextBridge.exposeInMainWorld("electron", {
     ReceberMensagem: () => {
         return ipcRenderer.invoke("ReceberMensagem")
     },
+    
 })

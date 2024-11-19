@@ -4,7 +4,6 @@ const { join } = require("path")
 require("./functions/conexão.js")
 const ObterModelo = require("./functions/modelo.js")
 
-
 app.whenReady()
     .then (() => {
         let username = ""
@@ -44,10 +43,6 @@ app.whenReady()
         })
         ipcMain.handle("ReceberMensagem", async () => {
             const mensagens = await modelo.find().sort({ tempo: "desc" }).lean()
-            console.log(mensagens)
             return mensagens
-        })
-
-        
-
+        })     
     })
