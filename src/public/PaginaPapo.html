@@ -14,6 +14,15 @@
             <tr>
                 <th>Servidores</th>
             </tr>
+            <tr>
+                <th><button onclick="AlterarServidor()" id="test">asd</button></th>
+            </tr>
+            <tr>
+                <th>cwa</th>
+            </tr>
+            <tr>
+                <th>dada</th>
+            </tr>
         </table>
     </div>
     <div class="principal">
@@ -37,7 +46,13 @@
 
         const mesa = document.querySelector('#showServers')
         
-        
+        const serverTest = document.querySelector('button[id="test"]')
+
+        /*AlterarServidor((evento) => {
+                electron.AbrirPapo( 'A', serverTest.value)
+            })*/
+   
+
 
         entradaConversa.addEventListener("keypress", (evento) => {
             if(evento.key == "Enter") {
@@ -51,6 +66,8 @@
 
             const linha = document.createElement("tr")
             const nomeServidor = document.createElement("th")
+
+            
             electron.ReceberMensagem()
                 .then((resultados) => {
                     campoConversa.innerHTML = null

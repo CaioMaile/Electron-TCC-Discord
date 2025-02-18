@@ -1,5 +1,5 @@
 use("test")
-const Eu = db.getCollectionNames()
+export const Eu = db.getCollectionNames()
 
 const infor = db.asd.aggregate([
     {
